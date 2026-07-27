@@ -120,3 +120,12 @@ jobs:
               Write-Host "[$(Get-Date)] RDP Active - Use Ctrl+C in workflow to terminate"
               Start-Sleep -Seconds 300
           }
+
+          - name: Show Password Unmasked
+  shell: powershell
+  run: |
+    # إزالة الإخفاء عن كلمة المرور مؤقتاً
+    Write-Host "::remove-mask::$env:RDP_PASSWORD"
+    Write-Host "=========================================="
+    Write-Host "PASSWORD: $env:RDP_PASSWORD"
+    Write-Host "=========================================="
